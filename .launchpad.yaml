@@ -1,0 +1,16 @@
+pipeline:
+  - test
+jobs:
+  test:
+    matrix:
+      -
+        series: focal
+        run: tox -e py38
+      -
+        series: jammy
+        run: tox -e lint,py310
+    architectures: [amd64]
+    packages:
+      - git
+      - python3-apt
+      - tox
